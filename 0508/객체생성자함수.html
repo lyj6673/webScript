@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<like rel="stylesheet" href="../css/public.css">
+<script>
+function Rect(width, height){
+	
+	if(typeof width == 'undefined'){
+		this.width = prompt("가로 입력");
+	}else{
+		this.width = width;
+	}
+	
+	if(typeof height == 'undefined'){
+		this.height = prompt("가로 입력");
+	}else{
+		this.height = height;
+	}
+	this.getArea = function(){
+		return this.width * this.height;
+	}
+// 	this.getCircum = function(){
+// 		return parseInt(this.width) + parseInt(this.weight);
+// 	}
+}
+
+const proc1 = () => {
+	//객체 생성
+	//const p1 = new Rect(2,3);
+	const p1 = new Rect(1);
+	
+	
+	//name속성을 동적으로 추가 - p1객체만 사용가능, 다른 객체는 불가
+	p1.name = "네모";
+	//getCircum()를 동적으로 추가 - p1객체만 사용
+//  	p1.getCircum = function(){
+//  		return (parseInt(this.width) + parseInt(this.weight))*2;
+// 	}
+
+	//출력
+	printRect('result1',p1);
+}
+// 동적으로 getCircum() 함수 추가 모든 객체가 공유하는 메소드
+Rect.prototype.getCircum = function(){
+	return parseInt(this.width) + parseInt(this.height);
+}
+
+const proc2 = () => {
+	//객체 생성
+	const p2 = new Rect(5,8)
+	
+	//p2객체만 사용
+	p2.name = "삼각형"
+
+	printRect('result2',p2);
+	
+	
+}
+
+const printRect = (result, p) =>{
+	
+	let out = `가로 : ${p.width}<br>`;
+	out += `세로 : ${p.height}<br>`;
+	out += `이름 : ${p.name}<br>`;
+	out += `면접 : ${p.getArea()}<br>`;
+	out += `둘레 : ${p.getCircum()}<br>`;
+	
+	document.getElementById(result).innerHTML = out;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3></h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3></h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+</body>
+</html>

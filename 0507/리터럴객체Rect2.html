@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+//객체 정의/선언
+const rect = { }
+
+
+//rect객체에 getCircum()메소드를 동적으로 추가
+// rect.getCircum = function(){
+	
+// }
+rect.getCircum = function(){
+	return (parseInt(this.garo) + parseInt(this.sero))*2;
+}
+
+const proc1 = () => {
+
+	//rect객체에 garo, sero, name 속성을 동적으로 추가
+	rect.garo = 4;
+	rect.sero = 6;
+	rect.name = '세모';
+	
+	rect.getArea = function(){
+		return this.garo*this.sero;
+	}
+	
+	//출력
+	printRect('result1');
+}
+
+const proc2 = () => {
+	//가로 입력
+	rect.garo = prompt("가로입력");
+	//세로 입력
+	rect.sero = prompt("세로입력");
+	
+	//출력
+	printRect('result2');
+}
+
+const proc3 = () => {
+	//이름 입력 - name속성은 rect객체에 선언 되지 않은 속성
+	//동적으로 필요시 추가 사용 가능하다
+	rect.name = prompt("이름입력");
+	//가로 입력
+	rect.garo = prompt("가로입력");
+	//세로 입력
+	rect.sero = prompt("세로입력");
+	printRect('result3');
+}
+
+const printRect = (res) => {
+	
+	let rname = "";
+	
+	if(typeof rect.name != 'undefined'){
+		rname = rect.name;
+	}
+	//출력
+	let disp = `가로 : ${rect.garo} <br>`;
+	disp += `세로 : ${rect.sero} <br>`;
+	disp += `이름 : ${rname} <br>`;
+	disp += `면적 : ${rect.getArea()} <br>`;
+	disp += `둘레 : ${rect.getCircum()} <br>`;
+	
+	document.getElementById(res).innerHTML = disp;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>리터럴 객체 생성<br>
+	const rect = { }</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+const today = new Date();
+
+window.onload = function(){
+	let tday = today.toLocaleDateString();
+	
+	//id=cur검색 tday를 출력
+	document.getElementById('cur').innerHTML = tday;
+	
+}
+
+const proc1 = () =>{
+	//현재 날짜의 millisec
+	let toTime = today.getTime();
+	console.log(toTime);
+	
+	//자기 생일의 millisec
+	let myday = new Date(2000,9-1, 15);
+	let myTime = myday.getTime();
+	
+	//millisec의 간격을 구한다. 현재 - 내생일
+	let times = toTime - myTime;
+	console.log(times);
+	
+	//times값으로 몇시간 경과? 몇 년 경과?
+	times = times/1000/60/60/24/365;
+	
+	let out = `오늘 : ${today.toLocaleDateString()}<br>`;
+	out += `내생일 : ${myday.toLocaleDateString()} <br>`;
+	out += `경과년수 : ${times}년 동안 살고 있어요`;
+	
+	document.getElementById('result1').innerHTML = out;
+}
+
+const proc2 = () =>{
+	//오늘의 | millisec
+	let toTime = today.getTime();
+	
+	//100일 후의 millisec
+	let time100 = 100 * 24 * 60 * 60 * 1000;
+	
+	//두 개의 값을 더해서 새로운 날짜 객체를 생성
+	const newDay = new Date(toTime + time100);
+	
+	//alert(newDay);
+	let out = `오늘 : ${today.toLocaleDateString()}<br>`;
+	out += `100일 후 ${newDay.toLocaleDateString()}<br>`;
+	
+	document.getElementById('result2').innerHTML = out;
+}
+
+//target : parameter변수, 매개변수, 무조건 지역변수
+//호출 시 this객체 변수를 받은 변수다.
+const proc3 = (target) =>{
+	//현재날짜(id-cur)부분의 값을 가져온다 - 문자열이다
+
+	curvalue = document.getElementById('cur').innerText;
+	
+	//curvalue 값으로 Date객체를 생성한다 - getTime();을 얻는다
+	nowDay = new Date(curvalue);
+	nowTime = nowDay.getTime();
+	
+	//1일의 getTime()구하기
+	oneTime = 1 * 24 * 60 * 60 * 1000;
+	
+	let newDay = null;
+	//이전 혹은 다음 비교
+	if(target.value == "이전"){
+		newDay = new Date(nowTime - oneTime);
+	}else if(target.value == "다음"){
+		newDay = new Date(nowTime + oneTime);
+	}
+// 	alert(newDay);
+	document.getElementById('cur').innerText =newDay.toLocaleDateString();
+}
+
+const proc4 = () =>{
+	//선택한 날짜를 가져온다 - id=pday 검색 - value - 결과는 문자열
+	pvalue = document.getElementById('pday').value;
+	//문자열 pvalue로 Date객체를 생성한다
+	pday = new Date(pvalue);
+	
+	//pday의 getTime() 값 얻기 (millisec)
+	ptime = getTime(pday);
+	
+	//today의 getTime() 값 얻기 (millisec)
+	totime = getTime(today);
+	
+	//총millisec = 오늘(totime) - 구입한 날(ptime)
+	total = totime - ptime;
+	
+	//1일의 getTime()구하기
+	oneTime = 1 * 24 * 60 * 60 * 1000;
+	
+	//total로 몇일 경과했는지 계산 /1000/60/60/24
+	day = total /1000/24/60/60;
+	
+	//비교
+	if(day>=7){
+		res = "교환불가능";
+	}else{
+		res = "교환가능";
+	}
+	
+	//출력
+				
+	let out = `구입한 날짜 : ${pday.toLocaleDateString()}<br>`;
+	out += `현재날짜 ${today.toLocaleDateString()}<br>`;
+	out += `결과 ${res}<br>`;
+	//result4에 출력
+	document.getElementById('result4').innerText = out;
+}
+
+</script>
+<style>
+div#cur{
+	display : inline-block;
+	width : 120px;
+	font-size : 1..3rem;
+	padding : 5px;
+	background : lightgray;
+}
+</style>
+</head>
+<body>
+<div class="box">
+
+<h3>경과시간 구하기 -getTime()<br>
+getTime()은 millisec값을 리턴한다<br>
+구입한 날로부터 현재까지 몇일 경과했는지 구한다<br>
+7일이상 경과했으면 교환 환불 불가능</h3>
+	<input id="pday" type="date" value="구매일" onclick="proc4()">
+	<input id="pday" type="button" value="확인" onclick="proc4()">
+	
+	<div id="result4"></div>
+</div>
+
+<div class="box">
+
+<h3>경과시간 구하기 -getTime()<br>
+오늘을 기준으로 이전 다음날 구하기<br>
+실행하면 id=cur에 오늘날짜가 출력된다 - window.onload = function(){}<br>
+이전버튼을 클릭하면 하루 전 날짜가 id=cur에 출력되고<br>
+다음버튼을 클릭하면 하루 후 날짜가 id=cur에 출력된다</h3>
+	<input type="button" value="이전" class="day" onclick="proc3(this)">
+	<div id = "cur">현재날짜</div>
+	<input type="button" value="다음" class="day" onclick="proc3(this)">
+	<br><br>
+	
+	<div id="result3"></div>
+</div>
+
+<div class="box">
+
+<h3>경과시간 구하기 -getTime()<br>
+getTime()은 millisec값을 리턴한다<br>
+오늘부터 1일 일때 100일째 되는 날</h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+
+<div class="box">
+
+<h3>경과시간 구하기 -getTime()<br>
+getTime()은 millisec값을 리턴한다<br>
+태어난 날로부터 현재까지 몇일 경과했는지 구한다</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+</body>
+</html>

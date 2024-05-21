@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+//함수 선언식
+function proc1(){
+	
+}
+function prontArr(res, arr){
+	
+}
+//함수표현식 - 익명함수 - 변수에 대입
+const proc1 = () =>{
+	const arr = ["사과", "복숭아", "바나나", "파인애플", "딸기"];
+	printArr('result1', arr)
+}
+
+const proc2 = () =>{
+	const fruits = new Array("사과", "수박", "망고", "자두", "참외");
+// 	const fruits = new Array();
+// 	fruits[0] = "사과";
+// 	fruits[1] = "수박";
+// 	fruits[2] = "망고";
+	printArr('result2',fruits)
+}
+
+const printArr = (res, arr) =>{
+	
+	//document.getElementById(res).innerHTML = arr;
+	//-------------------------------------------------------
+	
+	let str ="";
+	
+// 	for(let i=0; i<arr.length; i++){
+// 		str+=arr[i]+ " ";
+// 	}
+//-------------------------------------------------------
+// 	arr.forEach(function(ar, index){
+// 		//str += ar + " ";
+// 		str += `${index} 번째 : ${ar} <br>`;
+// 	})
+//-------------------------------------------------------
+	for(x in arr){
+		str += ` ${arr[x]} `;
+	}
+	document.getElementById(res).innerHTML = str;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>const arr = []</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3>const fruits = new()</h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+</body>
+</html>

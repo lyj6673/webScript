@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+window.onload = function(){
+	setInterval(() => {
+		//1초마다 한 번씩 시간 갱신
+		//Date객체를 생성
+		let curr = new Date();
+		
+		let out = `오늘은 ${curr.toLocaleString()}<br>`;
+		out += `${arr[day]}입니다`;
+		
+		
+		document.getElementById('result0').innerHTML = out;
+	}, 1000)
+}
+
+// 오늘의 날짜를 생성
+const today = new Date();
+
+//요일 구하기 요일의 배열 생성
+const arr=["일요일","월요일","화요일","수요일","목요일","금요일","토요일"]
+//배열접근 : arr[0] arr[1] arr[2] arr[3] arr[4] arr[5] arr[6]
+
+let day = today.getDay();
+//alert(day);
+
+const proc1 = () =>{
+	
+	
+	let out = `오늘은 ${today.toLocaleString()}<br>`;
+	out += `${arr[day]}입니다`;
+	
+	document.getElementById('result1').innerHTML = out;
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>1초간격으로 시계가 움직인다<br>
+setInterval(function(){}, millisec)함수를 사용<br>
+
+버튼 클릭 없이 window로드 되자마자 바로 실행 되도록 한다<br>
+window.onload = function(){}</h3>
+
+	<div id="result0"></div>
+
+<div class="box">
+
+<h3>요일 구하기 - getDay();<br>
+0~6값을 발생 - <br>
+1.if또는 switch를 이용해서 일요일~토요일로 변환 - 0502/조건switch문제.html를 참조<br>
+2. 배열을 이용 - 일요일 ~ 토요일의 값으로 배열을 생성, index를 가지고 배열요소에 접근</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+</body>
+</html>

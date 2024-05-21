@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+const str ="사랑은 늘 도망가 별빛같은 나의 사랑아";
+
+const proc1 = () =>{
+
+	let s1 = str.substring(10, 14);
+	let s2 = str.slice(10,14);
+	let s3 = str.substr(10,4);
+	
+	let out = `${str}<br>`;
+	out += `str.substring(10, 14) : ${s1}<br>`;
+	out += `str.slice(10,14) : ${s2}<br>`;
+	out += `str.substr(10,4) : ${s3}<br>`;
+	
+	document.getElementById('result1').innerHTML = out;
+	
+}
+
+const proc2 = () =>{
+	//입력 - 110326-4123456
+	input = prompt("주민번호 입력");
+	
+	//추출
+	let yy = input.substr(0,2);
+	let mm = input.substr(2,2);
+	let dd = input.substr(4,2);
+	let gend = input.substr(7,1);
+	
+	//비교 - 1900 / 2000인지 비교
+	let year=0;
+	if(gend=="1"||gend=="2"){
+		year=1900;
+		year = year + parceInt(yy);
+	}else if(gend=="3"||gend=="4"){
+		year=2000;
+		year = year + parceInt(yy);
+	}
+	
+	//남자, 여자 비교
+	
+	let gender = "";
+	if(gend=='1'||gend=='3'){
+		gender = "남자";
+	}else if(gend=="2"||gend=="4"){
+		gender = "여자";
+	}
+	//나이 : 현재년도 - 2011(1911)
+	let age = 0 ;
+	let today = new Date();
+	currYear = today.getFullYear();
+	age = currYear-year;
+	
+	//출력내용
+	let out = `주민번호 : ${input.substr(0,8)}******<br>`;
+	out += `생년월일 : ${year}년 ${mm}월 ${dd}일<br>`;
+	out += `성별 : ${gender}<br>`;
+	out += `나이 : ${age}<br>`;
+	
+	//result2에 출력
+	document.querySelector('#result2').innerHTML = out;
+}
+
+const proc3 = () =>{
+	const str = "234567892345"; //각 자리 수 별로 추출해서 곱하기 하는 숫자
+	let hap = 0;
+	
+	//입력 - 110325-23456789
+	input = prompt("주민번호 입력");
+	
+	//입력 값에서 -기호를 ""로 변경 - replace("-",)
+	re_input = input.replace("-","");
+	
+	//반복문 - str의 한자리와 re_input의 한자리를 추출, 두 수를 곱하고 더한다.
+	for(i=0; i<str.length;i++){
+		//한자리씩 추출
+		hap += str.substr(i,1)*re_input.substr(i,1);
+	}
+	// 11- (hap을 11로 나눈 나머지)를 구한다 ---> 0~11
+	let rest = 11 - (hap%11);
+	
+	//rest를 비교 - 10인지 - rest = 0 11이면 rest= 1 ----> 최종결과값 : 0~9
+	if(rest==10){
+		rest = 0;
+	}else if(rest==11){
+		rest = 1;
+	}
+	//입력한 수의 마지막 수 번째의 문자를 추출해서 최종 rest값을 비교
+	//같으면 진짜 틀리면 가짜
+	if(re_input.substr(re_input.length-1,1)==rest){
+		res = "진짜";
+	}else{
+		res = "가짜";
+	}
+
+	document.querySelector('#result3').innerHTML = res;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>문자열 추출<br>
+slice(start, end); start ~ end-1 문자열 추출<br>
+substring(start, end) : start ~ end-1 문자열 추출<br>
+substr(start, length) start~ length길이만큼 추출</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3>문자열 추출<br>
+prompt로 주민등록번호를 입력 받아 생년월일과 성별, 나이를
+출력하는 프로그램<br></h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+
+<div class="box">
+
+<h3>문자열 추출<br>
+주민등록번호를 입력 받아 주민등록번호의 유효성을 검사하는 프로그램을 작성하시오(ABCDEF-GHIJKLM)<br>
+1. A*2 + B*3 + ... + H*9 + I*2 + ... +L*5의 총합을 구한다.<br>
+2. 1번의 합을 11로 나눈 나머지를 구한다.<br>
+3. 11에서 2번의 결과를 뺀다<br>
+4. 3번의 결과가 0~9이면 값 그대로, 10이면 0, 11이면 1로 변환<br>
+5. 4번의 결과와 M자리의 값이 같으면 맞는 번호이다.</h3>
+	<input type="button" value="확인" onclick="proc3()">
+	<br><br>
+	
+	<div id="result3"></div>
+</div>
+</body>
+</html>

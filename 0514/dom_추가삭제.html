@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+const arr = ["hello","java","css","html","script","아아","home"];
+
+const proc1 = () =>{
+	console.log(this);
+	//랜덤발생
+	rand = parseInt(Math.random()*arr.length);
+	
+	//문자열 선택 - textNode를 생성
+	text =  document.createTextNode(arr[rand]);
+	//삭제 버튼 생성 - input tag생성
+	vinput = document.createElement("input");
+	//input tag의 속성 설정 - type, value
+	vinput.type = "button";
+	vinput.value = "삭제";
+	//input tag의 이벤트
+	vinput.onclick = deleteProc; //별도의 함수작성, 참조값을 대입
+// 	vinput.onclick = function(){
+// 		//클릭한 삭제버튼 this로 받아서 그의 부모를 찾는다 - ptag
+
+// 		target = this.parentNode;
+// 		target.remove();
+// 	}
+	
+	//p태그를 생성
+	vp = document.createElement('p');
+	
+	//p태그에 text와 button을 추가
+	vp.appendChild(text);
+	vp.appendChild(vinput);
+	
+	//result1검색 - 부모
+	vres = document.getElementById('result1');
+	//vp를 자식으로 추가한다
+	vres.appendChild(vp);
+	
+	
+}
+
+function deleteProc(){
+	console.log("3333-------------",this);
+	target = this.parentNode;
+	target.remove();
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3></h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+</body>
+</html>

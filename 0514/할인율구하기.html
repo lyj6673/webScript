@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+let ptag = null;
+let vnext = null;
+const proc1 = (target) =>{//target : 클릭한 이미지 this를 전달받은 파라미터 변수
+	
+	//이미 생성되어 있는 ptag를 지운다
+// 	if(ptag!=null){
+// 		ptag.remove();	
+// 	}
+
+	//클릭한 이미지(target)의 nextElement가 있을 때만 지운다.
+	vnext = target.nextElementSibling
+	
+	if(ptag != null && vnext != null) vnext.remove();
+	//할인율 발생 5~10
+	rand = parseInt(Math.random()*6+5);
+	//target- (클릭한 이미지의 부모 div)의 부모 찾는다
+	parent = target.parentNode;
+	
+	//p태그를 생성<p> 할인율 5% </p>
+	ptag = document.createElement('p');
+	//할인율 5%로 textNode생성
+	text= document.createTextNode("할인율 : "+rand + "%");
+	//textNode를 p태그에 추가
+	ptag.appendChild(text);
+	
+	//p태그를 parent에 추가
+	parent.appendChild(ptag);
+	
+	
+	
+}
+window.onload = function(){
+	img2 = document.querySelectorAll('#result2 img');
+	
+	for(i=0; i<img2.length;i++){
+		img2[i].addEventListener('click',function(){
+			//this : img2[i] 
+		
+			//클릭한 이미지(target)의 nextElement가 있을 때만 지운다.
+			vnext = this.nextElementSibling
+			
+			if(ptag != null && vnext != null) vnext.remove();
+			//할인율 발생 5~10
+			rand = parseInt(Math.random()*6+5);
+			//this- (클릭한 이미지의 부모 div)의 부모 찾는다
+			parent = this.parentNode;
+			
+			//p태그를 생성<p> 할인율 5% </p>
+			ptag = document.createElement('p');
+			//할인율 5%로 textNode생성
+			text= document.createTextNode("할인율 : "+rand + "%");
+			//textNode를 p태그에 추가
+			ptag.appendChild(text);
+			
+			//p태그를 parent에 추가
+			parent.appendChild(ptag);
+		})
+	}
+}
+
+</script>
+<style>
+p{
+	font-size : 18px;
+	text-align : center;
+}
+.result{
+	display : flex;
+	flex-direction : row;
+	padding : 3px;
+}
+.result div{
+	flex : 25%;
+	margin : 2px;
+	padding : 2px;
+	background : lightgray;
+}
+
+.result div img{
+	width : 100%;
+	height : 100px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h3>
+이미지를 클릭하면 p 태그를 생성하여 할인율 : 5% 내용을 출력<br>
+할인율은 랜덤으로 발생 5~10사이이다<br>
+p태그를 부모 div에 추가한다.<br>
+<br>
+이벤트 핸들러 작성 호출 : &lt;img onclick="proc1(this)">
+</h3>
+	<br><br>
+	
+	<div id="result1" class="result">
+	<div><img onclick="proc1(this)" src="../images/jQuery.jpg" alt="jQuery.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/image.5.jpg" alt="image.5.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/대나무숲.jpg" alt="대나무숲.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/수국4.jpg" alt="수국4.jpg"></div>
+	</div>
+</div>
+
+<div class="box">
+
+<h3>
+이미지를 클릭하면 p 태그를 생성하여 할인율 : 5% 내용을 출력<br>
+할인율은 랜덤으로 발생 5~10사이이다<br>
+p태그를 부모 div에 추가한다.<br>
+<br>
+이벤트 핸들러 작성 호출 : addEventListener('type',fn)
+</h3>
+	<br><br>
+	
+	<div id="result2" class="result">
+	<div><img onclick="proc1(this)" src="../images/jQuery.jpg" alt="jQuery.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/image.5.jpg" alt="image.5.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/대나무숲.jpg" alt="대나무숲.jpg"></div>
+	<div><img onclick="proc1(this)" src="../images/수국4.jpg" alt="수국4.jpg"></div>
+	</div>
+</div>
+</body>
+</html>

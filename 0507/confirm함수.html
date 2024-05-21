@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+const proc1 = () =>{
+	let total = 0;
+	let str = "";
+	
+	while(true){
+		//입력
+		input =parseInt(prompt("입력"));
+		
+		
+		//입력 값을 더하기
+		total += input;
+		str += input + " ";
+		
+		//break조건
+		yn = confirm("계속 할까요??");
+		if(!yn)break;
+		
+	}
+	
+	//출력
+	let out = `입력 값 들 : ${str} <br>`;
+	out += `합 : ${total}`;
+	
+	document.getElementById('result1').innerHTML = out;
+	
+}
+
+const proc2 = () => {
+	let str = "";
+	while(true){
+		//수입력
+		input = parseInt(prompt("입력"));
+		//구구단 생성
+		for(let i=1; i<=9;i++){
+			str += `${input}*${i} = ${input*i}<br>`;
+			
+		}
+		
+		//break비교
+		yn = confirm("계속 할까요??");
+		if(!yn)break;
+	}
+	document.getElementById('result2').innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>수를 하나 입력해서 합을 구한다<br>
+confirm()함수를 이용해서 비교한다</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3>구구단 출력</h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+</body>
+</html>

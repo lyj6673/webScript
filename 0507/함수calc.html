@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+//함수 선언식
+// function proc1(op){
+// }
+
+//함수 표현식 - 익명함수
+const proc1 = op => {
+	//id=x를 검색. 입력한 값을 가져오기 - value
+	let xvalue= parseInt(document.getElementById('x').value);
+	//id=y를 검색. 입력한 값을 가져오기 - value
+	let yvalue= parseInt(document.getElementById('y').value);
+	
+	//op 비교
+	switch(op){
+	case "+":
+		res = add(xvalue,yvalue);
+		break;
+	case "-":
+		res = sub(xvalue,yvalue);
+		break;
+	case "*":
+		res = multi(xvalue,yvalue);
+		break;
+	case "/":
+		res = divide(xvalue,yvalue);
+		break;
+	}
+	
+	document.getElementById('sum').value = res;
+	document.getElementById('sp1').innerText = xvalue;
+	document.getElementById('sp2').innerText = yvalue;
+	document.getElementById('sp3').innerText = res;
+}
+
+const add =(x,y) =>{
+	return x+y;
+}
+
+const sub =(x,y) =>{
+	return x-y;
+}
+const multi =(x,y) =>{
+	return x*y;
+}
+const divide =(x,y) =>{
+	return x/y;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3></h3>
+	x : <input id="x"><br>
+	y : <input id="y"><br><br>
+	결과 : <input type="text" id="sum"><br><br>
+	<input type="button" value="확인+" onclick="proc1('+')">
+	<input type="button" value="확인-" onclick="proc1('-')">
+	<input type="button" value="확인*" onclick="proc1('*')">
+	<input type="button" value="확인/" onclick="proc1('/')">
+	<br><br>
+	
+	<div id="result1">
+	<p>첫번째 값 : <span id="sp1"></span></p>
+	<p>두번째 값 : <span id="sp2"></span></p>
+	<p>결과 : <span id="sp3"></span></p>
+	</div>
+</div>
+</body>
+</html>

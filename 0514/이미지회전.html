@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+let imglist = null;
+const proc1 = (but) =>{
+	//but s는 시작버튼을 클릭시 this파라미터를 받은 지역변수
+	
+	//시작버튼을 감추기
+	but.style.display = "none";
+	
+	//종료 버튼 클릭할 때 생긴 border테두리 없애기 -
+	if(imglist != null){
+		imglist[rand].style.border = "none";
+	}
+	//but를 전역변수로 전환 - stopProc()함수에서 사용하도록
+	gbut = but;
+	
+	timer = setInterval(function(){
+		//첫번째 이미지를 선택 - 부모를 찾아서 firstChild
+		vres = document.getElementById('result1');
+		child = vres.firstChild;
+		
+		vres.appendChild(child);
+		
+	}, 500);
+	
+	
+}
+
+const stopProc = () =>{
+	//시작버튼을 다시 나타나게 하기
+	gbut.style.display = "inline";
+	
+	clearInterval(timer);
+	
+	//이미지 갯수
+	imglist = document.querySelectorAll('img');
+	
+	//랜덤발생
+	rand = parseInt(Math.random()*imglist.length);
+	
+	//이미지 선택
+	imglist[rand].style.border = "5px double red";
+}
+</script>
+<style>
+img{
+	width:100px;
+	height : 100px;
+}
+	
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h3>appendChild()의 기능<br>
+	1. 새로운 요소를 생성하여 추가<br>
+	2. 이미 존재하는 요소를 이동하는 기능</h3>
+	<input type="button" value="시작" onclick="proc1(this)">
+	
+	<h3>종료버튼 클릭하면 상품한개를 제공 - 테두리를 표시</h3>
+	<input type="button" value="종료" onclick="stopProc()">
+	<br><br>
+	
+	<div id="result1">
+	
+	<img src="../images/jQuery.jpg" alt="jQuery.jpg">
+	<img src="../images/image.5.jpg" alt="image.5.jpg">
+	<img src="../images/대나무숲.jpg" alt="대나무숲.jpg">
+	<img src="../images/수국4.jpg" alt="수국4.jpg">
+	<img src="../images/chopa.jpg" alt="chopa.jpg">
+	<img src="../images/풍차.jpg" alt="풍차.jpg">
+	<img src="../images/Jellyfish.jpg" alt="Jellyfish.jpg">
+	<img src="../images/국화10.jpg" alt="국화10.jpg">
+	
+	</div>
+	
+</div>
+</body>
+</html>
