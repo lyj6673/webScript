@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style>
+form{
+	border : 20px inset blue;
+	border-color : red;
+	
+	border-style : solid;
+	border-color : rgb(0,245,199) red;
+	border-color : #f1da9f;
+	width: 50%;
+	height: 500px;
+	margin : 30px;
+	padding : 20px;
+
+}
+</style>
+<script type="text/javascript">
+/* 함수 정의 */
+ 
+ function changeColor(){
+	//id=color인 요소를 검색
+	var vcolor = document.getElementById('color').value;
+	var vcolor = document.querySelector('#color').value;
+	
+	console.log(vcolor);
+	
+	//form 요소로 접근
+	vform = document.getElementById('ff')
+	vform = document.querySelector('#ff')
+	vform = document.ff
+	
+	vform.style.borderColor = vcolor;
+}
+ 
+</script>
+</head>
+<body>
+<pre>
+색상 선택해서 바뀌면 form태그의 테두리 색을 변경한다.
+</pre>
+
+<input id="color" type="color" onchange="changeColor()">
+<br><br>
+
+<form id="ff" name="ff">
+	<input type="number" min="0" max="10000" step="10" value="100"><br>
+	<input type="range" min="0" max="10000" step="10" value="1000"><br>
+	
+</form>
+</body>
+</html>

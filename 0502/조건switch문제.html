@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png">
+<script>
+const proc1 = () =>{
+	//첫번째 수 입력
+	let su1 = parseInt(prompt("첫번째 수 입력"));
+	//연산자 입력
+	let op = prompt("연산자 입력")
+	//두 번째수 입력
+	let su2 = parseInt(prompt("두번째 수 입력"));
+	
+	let res=0;
+	//비교 - switch - 연산
+	switch(op){
+	case "+":
+		res = su1+su2;
+		res = resPro(res);
+		break;
+	case "-":
+		res = su1-su2;
+		res = resPro(res);
+		break;
+	case "/":
+		res = su1/su2;
+		res = res.toFixed(2);
+		res = resPro(res);
+		break;
+	case "*":
+		res = su1*su2;
+		res = resPro(res);
+		break;
+	default : 
+		alert("연산자 오류");
+		return;
+	}
+	
+	//출력 내용 34 = 23 =57
+	let disp = `${su1} ${op} ${su2} = ${res} <br>`
+	// 출력
+	document.querySelector("#result1").innerHTML = disp;
+}
+
+const resPro = (a) =>{
+	x = a.toLocaleString();
+	return x;
+}
+
+const proc2 = () => {
+	let today = new Date();
+	
+	let day = today.getDay();
+	
+	switch(day){
+	case 0:
+		res = "일요일";
+		break;
+	case 1:
+		res = "월요일";
+		break;
+	case 2:
+		res = "화요일";
+		break;
+	case 3:
+		res = "수요일";
+		break;
+	case 4:
+		res = "목요일";
+		break;
+	case 5:
+		res = "금요일";
+		break;
+	case 6:
+		res = "토요일";
+		break;
+	}
+	//출력 내용
+	disp = `오늘은 ${today.toLocaleString()} <br>`;
+	disp += `${res}입니다`;
+	
+	document.getElementById('result2').innerHTML = disp;
+}
+
+const dayDisp = () => {
+	
+}
+</script>
+</head>
+<body>
+<div class="box">
+
+<h3>두 개의 정수와 연산자를 입력(prompt)해서 계산 하는 프로그램</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3>날짜 생성 - new Date()<br>
+getDay()를 이용하여 요일 구하기 - 0~6 사이의 값을 리턴</h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+</body>
+</html>

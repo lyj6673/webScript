@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://localhost/webpro/css/public.css">
+<script>
+const proc1 = () =>{
+	let sum = 0;
+	
+	for(let i=1; i<=10; i++){
+		sum+= i;
+	}
+	
+	let disp = `1~10까지의 합 = ${sum}`;
+	printShow('result1',disp);
+}
+
+const printShow = (result, res) =>{
+	document.getElementById(result).innerHTML = res;
+}
+
+const proc2 = () =>{
+	
+	let sum = 0;
+	
+// 	for(let i=0; i<=100; i+=2){
+// 		sum += i
+// 	}
+	for(let i=1; i<=100; i++){
+		if(i%2!=0){
+			continue;
+		}
+			sum += i;
+	}
+	
+	let disp = `1~100까지 짝수의 합 = ${sum}`;
+	printShow('result2',disp);
+}
+
+const proc3 = () =>{
+	let sum = 0; //숫자로 더하기
+	let str = "" //문자로 나열하기
+	
+	while(true){
+		let num = parseInt(prompt("값 입력"));
+		if(num==0)break;
+		
+		sum += num;
+		str += num + " ";
+
+	}
+	let disp = `더한 합 = ${sum} <br>`;
+	disp += `입력값들 = ${str}`;
+	printShow('result3',disp);
+}
+
+const proc4 = () =>{
+	let str = "";
+	for(let i=1; i<=10; i++){
+		for(let k=1; k<=10; k++){
+			if((i+k)%3 !=0)continue;
+			
+			str += `${i}${k}<br>`;
+		}
+	}
+	
+	let out = `더한 합이 3의 배수인 것들 <br>`;
+	out += str;
+	printShow('result4',out);
+}
+
+const proc5 = () =>{
+	let str = "";
+	str += `2의 배수이면서 3의 배수인 수 <br>`;
+	for(let i=1; i<=100; i++){
+		//비교 - 
+		if(i%2==0 && i%3==0){
+			str += `${i} <br>`;
+		}
+	}
+	
+	printShow('result5',str);
+}
+
+const proc6 = () =>{
+	let str = "";
+	
+	while(true){
+		let num1 = parseInt(prompt("값 입력1"));
+		let num2 = parseInt(prompt("값 입력2"));
+		if(num1==0 && num2==0)break;
+		if(num1+num2<100){
+			continue;
+		}
+			str+=`${num1} ${num2} <br>`;
+	}
+	printShow('result6',str);
+	
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+
+<h3>1~10까지 합 구하기</h3>
+	<input type="button" value="확인" onclick="proc1()">
+	<br><br>
+	
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+
+<h3>1~100까지 짝수의 합 구하기</h3>
+	<input type="button" value="확인" onclick="proc2()">
+	<br><br>
+	
+	<div id="result2"></div>
+</div>
+
+<div class="box">
+
+<h3>입력(prompt)한 값을 계속 더하고 0을 입력하면 종료</h3>
+	<input type="button" value="확인" onclick="proc3()">
+	<br><br>
+	
+	<div id="result3"></div>
+</div>
+
+<div class="box">
+
+<h3>i와 k의 더한 합이 3의 배수일때만 출력</h3>
+	<input type="button" value="확인" onclick="proc4()">
+	<br><br>
+	
+	<div id="result4"></div>
+</div>
+
+<div class="box">
+
+<h3>1~100까지 중 2의 배수이면서 3의 배수인 것만 출력</h3>
+	<input type="button" value="확인" onclick="proc5()"> 
+	<br><br>
+	
+	<div id="result5"></div>
+</div>
+
+<div class="box">
+
+<h3>두 수를 입력(prompt) 두수의 합이 100이상 일때만 출력</h3>
+	<input type="button" value="확인" onclick="proc6()"> 
+	<br><br>
+	
+	<div id="result6"></div>
+</div>
+</body>
+</html>

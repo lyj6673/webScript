@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	width: 30%;
+	height : 200px;
+	border : 2px dotted red;
+	margin : 20px;
+	padding : 30px;
+/* 	overflow : scrool; */
+	
+}
+#d2{
+	word-wrap : break-word; 
+}
+</style>
+<script>
+// function appendStr(){
+	
+// }
+// const appendStr=function(){
+	
+// }
+
+//문자배열 - String arr[] = {"aa", "sfergh","dsgf","fsdg"}
+const arr = ["hello", "JAVA", "HAPPy","GOODMorning", "newyear"]
+
+// 문자 선택 
+//화살표함수
+const appendStr = () => { 
+//랜덤 발생
+	let rand = parseInt(Math.random()*arr.length); 
+
+//textNode를 생성 - 랜덤으로 발생하는 문자열
+	let text = document.createTextNode(arr[rand]);
+	
+//부모요소인 div에 textNode를 자식요소로 추가 - appendChild()
+	document.querySelector('#d2').appendChild(text);
+}
+</script>
+</head>
+<body>
+<div id="d1">
+HappyNewyearHaHappyNewyearHappyNewyearHappyNewyearppyNewyearHappyNewyearHappyNewyearHappyNewyearHaHappyNewyearHappyNewyearHappy
+
+</div>
+<h2>
+확인버튼 클릭하면 랜덤으로 발생하는 문자열을 div에 삽입한다.
+</h2>
+
+<div id ="d2">
+Happy New Year~<br>
+
+</div>
+<input type="button" value="확인" onclick="appendStr()">
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	box-sizing : border-box;
+	border : 1px solid gray;
+	margin : 2px;
+	padding : 2px;
+	border-radius : 20px;
+}
+#header, #footer{
+	height : 50px;
+	background : #f5aadf;
+}
+.main{
+	height : 500px;
+	
+}
+#left, #right{
+	width : calc(20% - 1%);
+	background : #a5d9f1;
+}
+#left{
+	float : left;
+}
+#right{
+	float : right;
+}
+#center{
+	width : calc(59% - 1%);
+	float : left;
+	background-image : linear-gradient(skyblue, white);
+}
+#footer{
+	clear : both;
+}
+</style>
+</head>
+<body>
+<div id="header">header</div>
+<div id="left" class="main">left</div>
+<div id="center"class="main">center</div>
+<div id="right"class="main">right</div>
+<div id="footer">footer</div>
+</body>
+</html>

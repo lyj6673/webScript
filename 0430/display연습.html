@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	border : 1px solid blue;
+	width : 200px;
+	height : 40px;
+	display : none;
+}
+input[value=확인1]{
+	display : none;
+}
+</style>
+<script>
+// function showdiv(){}
+
+// const showdiv = function(){}
+
+const showdiv = () => {
+	//div요소를 검색
+	let div = document.querySelector('div'); //querySelector는 div가 여러개 있어도 제일 첫번째것만 선택
+	//div style를 변경
+	div.style.display = 'block';
+	
+	//확인1인 요소를 검색
+	let value1 = document.querySelector('input[value=확인1]');
+	value1.style.display = 'inline-block';
+}
+</script>
+</head>
+<body>
+<button type="button" onclick="showdiv()">확인</button>
+<br><br>
+
+<div>
+<p> 무궁화 꽃이 피었습니다</p>
+</div>
+<br><br>
+<input type="button" value="확인1">
+<input type="button" value="확인2">
+
+</body>
+</html>

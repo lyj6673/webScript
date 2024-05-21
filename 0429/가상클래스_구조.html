@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table{
+	border : 2px solid green;
+}
+td{
+	width : 200px;
+	height : 50px;
+	text-align : center;
+}
+p:first-child{
+	background: yellow;
+}
+p:last-child{
+	background : red;
+}
+
+p:nth-child(2){
+	background : blue;
+}
+
+p:nth-child(2n){
+	color : red;
+}
+p:nth-child(odd){
+	color : green;
+}
+
+tr:first-child{
+	font-weigth : bold;
+	font-size : 2.0rem;
+}
+tr:nth-child(2n+1){
+	background : pink;
+}
+tr:nth-child(even){
+	background : gray;
+}
+
+#tab2 td:first-child{
+	background : #afdfaa;
+}
+#tab2 td:nth-child(2){
+	background : #d7a9f1;
+}
+/* table > tr { */
+/* 	background : red; */
+/* } */
+
+</style>
+</head>
+<body>
+<pre>
+가상클래스 - 의사클래스 - 구조(관계)
+
+: first-child
+: last-child
+: nth-child(인덱스/even/odd/수식)
+: nth-child(2)
+: nth-child(even) /: nth-child(2n)
+: nth-child(odd) /: nth-child(2n+1)
+</pre>
+<div>
+<p>무궁화 꽃이 피었습니다</p>
+<p>무궁화 꽃이 피었습니다</p>
+<p>무궁화 꽃이 피었습니다</p>
+<p>무궁화 꽃이 피었습니다</p>
+<p>무궁화 꽃이 피었습니다</p>
+</div>
+
+<table border="1">
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+</table>
+
+<table id="tab2" border="1">
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+</table>
+</body>
+</html>
