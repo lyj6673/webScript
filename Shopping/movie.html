@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#container{
+	
+}
+section{
+	display : flex;
+}
+article{
+	border : 1px solid lightgray;
+	flex-direction: row;
+	padding : 20px;
+	margin : 5px;
+	width : 300px;
+
+}
+img{
+	width : 200px;
+	height : 200px;
+}
+
+iframe {
+     display: none; 
+}
+</style>
+</head>
+<body>
+<iframe name="ifr1" width="560" height="315" src="https://www.youtube.com/embed/TeRjKEZaUaA?si=y-hLU_1mQ8Sm1avp" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+ gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+ <iframe name="ifr2" width="560" height="315" src="https://www.youtube.com/embed/lxRrFVn8qUQ?si=HsFFCg6oK0Xy6KU3" 
+ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+ gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div id='container'>
+<section>
+<article>
+<a href="#" onclick="Iframe('ifr1')">
+<img src="../hw_Img/항거.jpg" alt="항거.jpg" onclick="Iframe('ifr1')">
+</a>
+</article>
+
+<article>
+<a href="#" onclick="Iframe('ifr2')">
+<img src="../hw_Img/극한직업.jpg" alt="극한직업.jpg">
+</a>
+</article>
+
+</section>
+</div>
+<script>
+var currentIframe = null;
+
+function Iframe(iframeName) {
+  var iframe = document.getElementsByName(iframeName)[0];
+
+  // 현재 표시된 아이프레임이 있을 경우 숨기기
+  if (currentIframe !== null && currentIframe !== iframe) {
+    currentIframe.style.display = 'none';
+  }
+
+  // 클릭된 포스터에 해당하는 아이프레임 표시하기
+  iframe.style.display = (iframe.style.display == 'none') ? 'block' : 'none';
+  
+  // 현재 표시된 아이프레임 갱신
+  currentIframe = iframe;
+}
+</script>
+</body>
+</html>

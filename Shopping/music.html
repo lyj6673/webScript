@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#container{
+
+}
+section{
+	display : flex;
+}
+article{
+	border : 1px solid lightgray;
+	flex-direction: row;
+	padding : 20px;
+	margin : 5px;
+	width : 300px;
+
+}
+#audio-player {
+  width: 100%; /* 오디오 플레이어 컨테이너에 맞게 너비 조정 */
+}
+img{
+	width : 200px;
+	height : 200px;
+}
+</style>
+</head>
+<body>
+<div id='container'>
+<section>
+<article>
+<img src="../hw_Img/잇지.jpg" alt="잇지.jpg">
+<p>'JYP 5인조 신인 걸그룹'<br>
+ITZY, 타이틀곡 '달라달<br>
+라' 발매!</p>
+<audio id="audio-player" src="old_pop.mp3" autoplay controls ></audio>
+<br>
+<input type="button" value="쇼핑카트에 추가하기">
+</article>
+<article>
+<img src="../hw_Img/2002.jpg" alt="2002.jpg">
+<p>Anne Marie(앤마리) -<br>
+2002<br>
+Anne Marie~~!!!!</p>
+<audio id="audio-player" src="old_pop.mp3" autoplay controls ></audio>
+<br>
+<input type="button" value="쇼핑카트에 추가하기">
+</article>
+<article>
+<img src="../hw_Img/소우주.jpg" alt="소우주.jpg">
+<p>소우주 (Mikrokosmos)<br>
+방탄소년단</p>
+<audio id="audio-player" src="old_pop.mp3" autoplay controls ></audio>
+<br>
+<input type="button" value="쇼핑카트에 추가하기">
+</article>
+</section>
+</div>
+</body>
+</html>
