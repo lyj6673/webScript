@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/* 함수 정의 */
+ function calc(){
+	 //id="price",id="qty" 인 요소에 접근 - 값 가져오기
+	 let item = document.getElementById('name').value;
+	 let price = document.querySelector('#price').value;
+	 let qty = document.getElementById('qty').value;
+	 
+	 let res = price * qty;
+	 res = res.toLocaleString();
+	 
+	 alert(res);
+	 // id="result"인 요소를 검색 - 출력
+	 document.getElementById('result').value = res;
+	 
+	 //id="dres"인 요소를 검색
+	 
+	 //출력내용
+	 code = `<table border="1">
+	 	<tr><td>상품명</td><td>${item}</td></tr>
+		 <tr><td>수량</td><td>${qty}</td></tr>
+		 <tr><td>가격</td><td>${price}</td></tr>
+		 <tr><td>total</td><td>${res}</td></tr>
+		 	</table>`;
+		 	
+		 	document.getElementById('dres').innerHTML = code;
+}
+</script>
+</head>
+<body>
+<form>
+상품명 <input type="text" id="name"><br>
+가격<input type="number" id="price" value="100" step="10" max="100000" min="10"><br>
+수량<input type="number" id="qty" value="10" step="5" max="100" min="0"><br>
+<br>
+<br>
+<input type="button" value="확인" onclick="calc()"> <!-- 함수 호출 -->
+결과<input type = "text" id="result"><br><br>
+
+<div id='dres'></div>
+</form>
+
+</body>
+</html>

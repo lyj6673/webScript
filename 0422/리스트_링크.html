@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+pre{
+	background-color : rgb(205, 198, 210);
+	border : 5px double blue;
+	margin : 5px;
+	padding : 5px;
+	font-size : 1.5rem;
+	
+	border-right : none;
+}
+a{
+	border : 2px solid pink;
+	margin : 5px;
+	padding : 5px;
+	letter-spacing: 20px;
+	text-decoration : none;
+}
+
+#u1 li, #o1 li{
+/* 	border : 1px solid green; */
+	margin : 5px;
+}
+#u1 a, #o1 a, #u3 a{
+	padding : 0px;
+	border : none;
+	letter-spacing: 10px;
+}
+
+div{
+	border : 2px solid blue;
+	padding : 5px;
+	width : 20%;
+	margin : 5px;
+	float : right;
+}
+</style>
+</head>
+<body>
+<pre>
+스타일에서 요소를 선택 시
+자식 : #u1 >li > a(o)	 #u1 > a(x)
+후손 : #u1 a  #u1 li
+</pre>
+<p> a태그 : 하이퍼링크, a링크, 링크 </p>
+<p> 문서를 이동 하고자 하는 목적 </p>
+<a href="http://www.naver.com">네이버</a>
+<a href="http://www.daum.net">다음</a>
+<a href="http://www.w3schools.com">w3schools</a>
+<a href="http://www.nate.com">네이트</a>
+<br><br>
+<div>
+	<ul id="u1">
+		<li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+		<li><a href="http://www.daum.net" target="_blank">다음</a></li>
+		<li><a href="http://www.w3schools.com" target="_blank">w3schools</a></li>
+		<li><a href="http://www.nate.com" target="_blank">네이트</a></li>
+	</ul>
+</div>
+
+<div>
+	<ul id="u2">
+		<li><img src="../images/image.4.jpg" alt="image.4.jpg"></li>
+		<li><img src="../images/image.1.jpg" alt="image.1.jpg"></li>
+		<li><img src="../images/image.6.jpg" alt="image.6.jpg"></li>
+		<li><img src="../images/image.3.jpg" alt="image.3.jpg"></li>
+	</ul>
+</div>
+
+<div>
+	<ul id="u3">
+		<li><a href="http://www.naver.com">
+			     <img src="../images/image.1.jpg" alt="image.1.jpg">
+			</a>
+		</li>
+		<li><a href="http://www.daum.com">
+			     <img src="../images/image.2.jpg" alt="image.2.jpg">
+			</a>
+		</li>
+		<li><a href="http://www.w3schools.com">
+			     <img src="../images/image.3.jpg" alt="image.3.jpg">
+			</a>
+		</li>
+		<li><a href="http://www.nate.com">
+			     <img src="../images/image.4.jpg" alt="image.4.jpg">
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div>
+	<ol id="o1">
+		<li><a href="http://www.naver.com">네이버</a></li>
+		<li><a href="http://www.daum.net">다음</a></li>
+		<li><a href="http://www.w3schools.com">w3schools</a></li>
+		<li><a href="http://www.nate.com">네이트</a></li>
+	</ol>
+</div>
+
+</body>
+</html>
